@@ -35,6 +35,7 @@ namespace BlackBoard.Data
             modelBuilder.Entity<Student>()
                 .Property(s => s.LastName)
                 .IsRequired();
+            //Data seeding Student
             modelBuilder.Entity<Student>()
                 .HasData(new Student()
                 {
@@ -43,16 +44,28 @@ namespace BlackBoard.Data
                     FirstName = "Chris",
                     LastName = "Bernold",
                     Grade = 8.3,
-
-
+                    GradulationDate = new DateTime(2020, 1, 1),
                 });
 
             //Enroll
             //Relationships
             modelBuilder.Entity<Enroll>()
+                .HasKey(t => new {t.CourseId, t.StudentAuId});
+            modelBuilder.Entity<Enroll>()
+                .HasOne(e => e.Course)
+                .WithMany(c => c.Enrolls)
+                .HasForeignKey(e => e.CourseId);
+            modelBuilder.Entity<Enroll>()
                 .HasOne(e => e.Student)
                 .WithMany(s => s.Enrolls)
                 .HasForeignKey(e => e.StudentAuId);
+            //Data seeding Enroll
+            modelBuilder.Entity<Enroll>()
+                .HasData(new Enroll()
+                {
+                    CourseId = "DAB",
+                    StudentAuId = 350 
+                });
 
             //Teacher    
             //Primary key definition
@@ -68,7 +81,16 @@ namespace BlackBoard.Data
             modelBuilder.Entity<Teacher>()
                 .Property(t => t.IsAssistant)
                 .IsRequired();
-
+            //Data seeding Teacher
+            modelBuilder.Entity<Teacher>()
+                .HasData(new Teacher()
+                {
+                    TeacherAuId = 1,
+                    FirstName = "Lars",
+                    LastName = "Jensen",
+                    IsAssistant = false,
+                    Birthday = new DateTime(1980, 1, 1)
+                });
             //GroupInfo
             modelBuilder.Entity<GroupInfo>()
                 .Property(gi => gi.GroupSize)
@@ -81,6 +103,14 @@ namespace BlackBoard.Data
             modelBuilder.Entity<GroupInfo>()
                 .HasOne(gi => gi.Teacher)
                 .WithMany(t => t.GroupInfos);
+            //Data seeding groupinfo
+            modelBuilder.Entity<GroupInfo>()
+                .HasData(new GroupInfo()
+                {
+                    GroupInfoId = 1,
+                    GroupSize = 3,
+                    StudentAuId = 350,
+                });
 
             //GroupHandin
             //Relationships
@@ -96,7 +126,15 @@ namespace BlackBoard.Data
                 .HasOne(gh => gh.Teacher)
                 .WithMany(t => t.GroupHandins)
                 .HasForeignKey(gh => gh.TeacherAuId);
-
+            //Data seeding GroupHandin
+            modelBuilder.Entity<GroupHandin>()
+                .HasData(new GroupHandin()
+                {
+                    GroupHandinId = 1,
+                    AssignmentId = 1,
+                    GroupInfoId = 1,
+                    TeacherAuId = 1
+                });
             //Course
             modelBuilder.Entity<Course>()
                 .Property(c => c.CourseName)
@@ -106,11 +144,15 @@ namespace BlackBoard.Data
                 .HasOne(c => c.Teacher)
                 .WithMany(t => t.Courses)
                 .HasForeignKey(c => c.TeacherAuId);
+            //Data seeding Course
             modelBuilder.Entity<Course>()
-                .HasOne(c => c.Enroll)
-                .WithMany(e => e.Courses)
-                .HasForeignKey(c => c.EnrollId);
-
+                .HasData(new Course()
+                {
+                    CourseId = "DAB",
+                    CourseName = "Databases",
+                    ClassDateTime = new DateTime(2016, 1, 1),
+                    TeacherAuId = 1
+                });
             //CourseContent
             modelBuilder.Entity<CourseContent>()
                 .Property(cc => cc.ContentName)
@@ -118,19 +160,35 @@ namespace BlackBoard.Data
             modelBuilder.Entity<CourseContent>()
                 .HasOne(cc => cc.Course)
                 .WithMany(c => c.CourseContents)
-                .HasForeignKey(cc => cc.CourseContentId);
-
+                .HasForeignKey(cc => cc.CourseId);
+            //Data seeding CourseContent
+            modelBuilder.Entity<CourseContent>()
+                .HasData(new CourseContent()
+                {
+                    CourseContentId = "L1",
+                    ContentName = "Intro",
+                    CourseId = "DAB"
+                });
             //Assignment
             modelBuilder.Entity<Assignment>()
                 .Property(a => a.AssignmentName)
                 .IsRequired();
-
             //Relationships
             modelBuilder.Entity<Assignment>()
                 .HasOne(a => a.Course)
                 .WithMany(c => c.Assignments)
                 .HasForeignKey(a => a.CourseId);
+            //Data seeding Assignment
+            modelBuilder.Entity<Assignment>()
+                .HasData(new Assignment()
+                {
+                    AssignmentId = 1,
+                    AssignmentName = "EF core",
+                    Deadline = new DateTime(2016, 1, 1),
+                    RedoCounter = 1,
+                    CourseId = "DAB"
 
+                });
 
         }
 
