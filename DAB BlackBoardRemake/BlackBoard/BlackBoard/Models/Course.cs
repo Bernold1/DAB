@@ -8,6 +8,7 @@ namespace BlackBoard.Models
 {
     public class Course
     {
+         
         public string CourseId { get; set; }
 
         [Display(Name = "Course Name")]

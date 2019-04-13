@@ -21,6 +21,8 @@ namespace BlackBoard.Models
         [DataType(DataType.Date)]
         public DateTime GradulationDate { get; set; }
         public double Grade { get; set; }
+        [Display (Name = "Active Status")]
+        public bool isActive { get; set; }
 
         public List<Enroll> Enrolls { get; set; }
         public List<GroupInfo> GroupInfos { get; set; }

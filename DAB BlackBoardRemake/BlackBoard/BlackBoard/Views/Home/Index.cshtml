@@ -3,7 +3,8 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Welcome</h1><br/><br/>
+    <h3>Click on links above or below to retrieve relevant information</h3><br/><br/>
     
 </div>
 
@@ -12,10 +13,11 @@
 </style>
 
 
-<div class="box-shadow">
-
-    <a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Students</a>
-
-</div>
+<body>
+<a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Click here to view all Students</a>
+<a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Click here to view all Courses</a>
+<a class="nav-link text-dark" asp-area="" asp-controller="Teachers" asp-action="Index">Click here to view all Teachers</a>
+<a class="nav-link text-dark" asp-area="" asp-controller="Enrolls" asp-action="Index">Click here to enroll a student to a course</a>
+</body>
 
 

@@ -1,4 +1,4 @@
-﻿@model BlackBoard.Models.Student
+﻿@model BlackBoard.Models.Teacher
 
 @{
     ViewData["Title"] = "Edit";
@@ -6,13 +6,13 @@
 
 <h1>Edit</h1>
 
-<h4>Student</h4>
+<h4>Teacher</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="StudentAuId" />
+            <input type="hidden" asp-for="TeacherAuId" />
             <div class="form-group">
                 <label asp-for="FirstName" class="control-label"></label>
                 <input asp-for="FirstName" class="form-control" />
@@ -23,25 +23,15 @@
                 <input asp-for="LastName" class="form-control" />
                 <span asp-validation-for="LastName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="EnrolledDate" class="control-label"></label>
-                <input asp-for="EnrolledDate" class="form-control" />
-                <span asp-validation-for="EnrolledDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="GradulationDate" class="control-label"></label>
-                <input asp-for="GradulationDate" class="form-control" />
-                <span asp-validation-for="GradulationDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Grade" class="control-label"></label>
-                <input asp-for="Grade" class="form-control" />
-                <span asp-validation-for="Grade" class="text-danger"></span>
-            </div>
             <div class="form-group form-check">
                 <label class="form-check-label">
-                    <input class="form-check-input" asp-for="isActive" /> @Html.DisplayNameFor(model => model.isActive)
+                    <input class="form-check-input" asp-for="IsAssistant" /> @Html.DisplayNameFor(model => model.IsAssistant)
                 </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="Birthday" class="control-label"></label>
+                <input asp-for="Birthday" class="form-control" />
+                <span asp-validation-for="Birthday" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />

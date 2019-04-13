@@ -10,22 +10,22 @@ using BlackBoard.Models;
 
 namespace BlackBoard.Controllers
 {
-    public class StudentsController : Controller
+    public class TeachersController : Controller
     {
         private readonly MyDBContext _context;
 
-        public StudentsController(MyDBContext context)
+        public TeachersController(MyDBContext context)
         {
             _context = context;
         }
 
-        // GET: Students
+        // GET: Teachers
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Students.ToListAsync());
+            return View(await _context.Teachers.ToListAsync());
         }
 
-        // GET: Students/Details/5
+        // GET: Teachers/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,39 +33,39 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudentAuId == id);
-            if (student == null)
+            var teacher = await _context.Teachers
+                .FirstOrDefaultAsync(m => m.TeacherAuId == id);
+            if (teacher == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(teacher);
         }
 
-        // GET: Students/Create
+        // GET: Teachers/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Students/Create
+        // POST: Teachers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentAuId,FirstName,LastName,EnrolledDate,GradulationDate,Grade,isActive")] Student student)
+        public async Task<IActionResult> Create([Bind("TeacherAuId,FirstName,LastName,IsAssistant,Birthday")] Teacher teacher)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                _context.Add(teacher);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(teacher);
         }
 
-        // GET: Students/Edit/5
+        // GET: Teachers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -73,22 +73,22 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var teacher = await _context.Teachers.FindAsync(id);
+            if (teacher == null)
             {
                 return NotFound();
             }
-            return View(student);
+            return View(teacher);
         }
 
-        // POST: Students/Edit/5
+        // POST: Teachers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentAuId,FirstName,LastName,EnrolledDate,GradulationDate,Grade,isActive")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("TeacherAuId,FirstName,LastName,IsAssistant,Birthday")] Teacher teacher)
         {
-            if (id != student.StudentAuId)
+            if (id != teacher.TeacherAuId)
             {
                 return NotFound();
             }
@@ -97,12 +97,12 @@ namespace BlackBoard.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(teacher);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.StudentAuId))
+                    if (!TeacherExists(teacher.TeacherAuId))
                     {
                         return NotFound();
                     }
@@ -113,10 +113,10 @@ namespace BlackBoard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(teacher);
         }
 
-        // GET: Students/Delete/5
+        // GET: Teachers/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -124,30 +124,30 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudentAuId == id);
-            if (student == null)
+            var teacher = await _context.Teachers
+                .FirstOrDefaultAsync(m => m.TeacherAuId == id);
+            if (teacher == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(teacher);
         }
 
-        // POST: Students/Delete/5
+        // POST: Teachers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Students.FindAsync(id);
-            _context.Students.Remove(student);
+            var teacher = await _context.Teachers.FindAsync(id);
+            _context.Teachers.Remove(teacher);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentExists(int id)
+        private bool TeacherExists(int id)
         {
-            return _context.Students.Any(e => e.StudentAuId == id);
+            return _context.Teachers.Any(e => e.TeacherAuId == id);
         }
     }
 }

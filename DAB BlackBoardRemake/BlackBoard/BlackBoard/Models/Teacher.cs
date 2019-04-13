@@ -19,7 +19,6 @@ namespace BlackBoard.Models
 
         [Display(Name = "Birthday")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "0:yyyy-MM-dd")]
         public DateTime Birthday { get; set; }
 
         public List<GroupHandin> GroupHandins { get; set; }
