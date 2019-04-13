@@ -12961,11 +12961,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Chris\\Desktop\\DAB BlackBoardRemake\\BlackBoard\\BlackBoard\\BlackBoard.csproj",
+      "projectUniqueName": "C:\\Users\\Chris\\Desktop\\repo\\dab\\DAB\\DAB BlackBoardRemake\\BlackBoard\\BlackBoard\\BlackBoard.csproj",
       "projectName": "BlackBoard",
-      "projectPath": "C:\\Users\\Chris\\Desktop\\DAB BlackBoardRemake\\BlackBoard\\BlackBoard\\BlackBoard.csproj",
+      "projectPath": "C:\\Users\\Chris\\Desktop\\repo\\dab\\DAB\\DAB BlackBoardRemake\\BlackBoard\\BlackBoard\\BlackBoard.csproj",
       "packagesPath": "C:\\Users\\Chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Chris\\Desktop\\DAB BlackBoardRemake\\BlackBoard\\BlackBoard\\obj\\",
+      "outputPath": "C:\\Users\\Chris\\Desktop\\repo\\dab\\DAB\\DAB BlackBoardRemake\\BlackBoard\\BlackBoard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
