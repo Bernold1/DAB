@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackBoard", "BlackBoard\BlackBoard.csproj", "{3F3084B7-67F0-49A7-AC9B-0B735943BB64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3F3084B7-67F0-49A7-AC9B-0B735943BB64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3084B7-67F0-49A7-AC9B-0B735943BB64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3084B7-67F0-49A7-AC9B-0B735943BB64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3084B7-67F0-49A7-AC9B-0B735943BB64}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {47F11C4D-C3BB-492B-A46C-E1E25D4DDAF2}
+	EndGlobalSection
+EndGlobal
