@@ -37,11 +37,13 @@ namespace BlackBoard.Controllers
             var course = await _context.Courses
                 .Include(c => c.Teacher)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
+
             if (course == null)
             {
                 return NotFound();
             }
 
+            var vEnrolls = course.Enrolls;
             return View(course);
         }
 
