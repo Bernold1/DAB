@@ -34,6 +34,10 @@ namespace BlackBoard.Controllers
             }
 
             var @group = await _context.Group
+                .Include(g => g.GroupInfos)
+                .ThenInclude(gi => gi.Student)
+                .Include(g=>g.GroupHandins)
+                .ThenInclude(gh => gh.Teacher)
                 .FirstOrDefaultAsync(m => m.GroupId == id);
             if (@group == null)
             {

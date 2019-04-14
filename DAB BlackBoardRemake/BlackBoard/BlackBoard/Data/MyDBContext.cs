@@ -46,6 +46,16 @@ namespace BlackBoard.Data
                     Grade = 8.3,
                     GradulationDate = new DateTime(2020, 1, 1),
                 });
+            modelBuilder.Entity<Student>()
+                .HasData(new Student()
+                {
+                    StudentAuId = 320,
+                    EnrolledDate = new DateTime(2016, 1, 1),
+                    FirstName = "Mads",
+                    LastName = "Bjerg",
+                    Grade = 8.3,
+                    GradulationDate = new DateTime(2020, 1, 1),
+                });
 
             //Enroll
             //Relationships
@@ -110,13 +120,24 @@ namespace BlackBoard.Data
                 .HasData(new GroupInfo()
                 {
                     GroupInfoId = 1,
-                    GroupId = 1,
+                    GroupId = 3,
                     GroupSize = 3,
                     StudentAuId = 350,
+                });
+            modelBuilder.Entity<GroupInfo>()
+                .HasData(new GroupInfo()
+                {
+                    GroupInfoId = 2,
+                    GroupId = 3,
+                    GroupSize = 3,
+                    StudentAuId = 320,
                 });
 
             //GroupHandin
             //Relationships
+            modelBuilder.Entity<GroupHandin>()
+                .Property(gh => gh.Grade)
+                .IsRequired();
             modelBuilder.Entity<GroupHandin>()
                 .HasOne(gh => gh.Assignment)
                 .WithMany(a => a.GroupHandins)
@@ -139,7 +160,8 @@ namespace BlackBoard.Data
                 {
                     GroupHandinId = 1,
                     AssignmentId = 1,
-                    GroupId = 1, //plejede at være groupinfoid før group blev et joined table
+                    GroupId = 1,
+                    Grade = 10,
                     TeacherAuId = 1
                 });
             //Course

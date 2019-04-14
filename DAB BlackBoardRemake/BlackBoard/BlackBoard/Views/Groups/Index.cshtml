@@ -11,19 +11,25 @@
 </p>
 <table class="table">
     <thead>
-        <tr>
-            <th></th>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.GroupId)
+        </th>
+        <th></th>
+    </tr>
     </thead>
     <tbody>
 @foreach (var item in Model) {
-        <tr>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.GroupId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.GroupId">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.GroupId">Delete</a>
-            </td>
-        </tr>
+    <tr>
+        <th>
+            @Html.DisplayFor(model => item.GroupId)
+        </th>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.GroupId">Edit</a> |
+            <a asp-action="Details" asp-route-id="@item.GroupId">Details</a> |
+            <a asp-action="Delete" asp-route-id="@item.GroupId">Delete</a>
+        </td>
+    </tr>
 }
     </tbody>
 </table>

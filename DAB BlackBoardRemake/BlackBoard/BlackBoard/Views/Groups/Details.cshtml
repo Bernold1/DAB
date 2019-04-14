@@ -4,13 +4,70 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Group Details</h1>
 
 <div>
     <h4>Group</h4>
     <hr />
+    <h5>Students in Group</h5>
     <dl class="row">
+        @if (this.Model != null)
+        {
+            foreach (var groups in this.Model.GroupInfos)
+            {
+                <dt class="col-sm-2">
+                    <p>Name: </p>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelGI => groups.Student.FirstName)
+                    @Html.DisplayFor(modelGI => groups.Student.LastName)
+                </dd>
+            }
+        }
+        else
+        {
+            <h4><br />No students in group..</h4>
+        }
+
+        @if (this.Model != null)
+        {
+            foreach (var groups in this.Model.GroupHandins)
+            {
+                <dt class="col-sm-2">
+                    <p>Teacher: </p>
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelGH => groups.Teacher.FirstName)
+                </dd>
+            }
+        }
+        else
+        {
+            <h4><br />No students in group..</h4>
+        }
     </dl>
+    <h5>Handins</h5>
+    <dl class="row">
+        @if (this.Model != null)
+        {
+            foreach (var groups in this.Model.GroupHandins)
+            {
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(modelGH => groups.GroupHandinId)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(modelGH => groups.GroupHandinId)
+                    <a asp-controller="GroupHandins" asp-action="Details" asp-route-id="@groups.GroupHandinId"> Go To</a> 
+                </dd>
+            }
+        }
+        else
+        {
+            <h4><br />No students in group..</h4>
+        }
+
+    </dl>
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.GroupId">Edit</a> |
