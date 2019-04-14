@@ -136,16 +136,9 @@ namespace BlackBoard.Data
             //GroupHandin
             //Relationships
             modelBuilder.Entity<GroupHandin>()
-                .Property(gh => gh.Grade)
-                .IsRequired();
-            modelBuilder.Entity<GroupHandin>()
                 .HasOne(gh => gh.Assignment)
                 .WithMany(a => a.GroupHandins)
                 .HasForeignKey(gh => gh.AssignmentId);
-            /*modelBuilder.Entity<GroupHandin>()
-                .HasOne(gh => gh.GroupInfo)
-                .WithMany(gi => gi.GroupHandins)
-                .HasForeignKey(gh => gh.GroupInfoId);*/
             modelBuilder.Entity<GroupHandin>()
                 .HasOne(gh => gh.Teacher)
                 .WithMany(t => t.GroupHandins)
@@ -161,7 +154,6 @@ namespace BlackBoard.Data
                     GroupHandinId = 1,
                     AssignmentId = 1,
                     GroupId = 1,
-                    Grade = 10,
                     TeacherAuId = 1
                 });
             //Course

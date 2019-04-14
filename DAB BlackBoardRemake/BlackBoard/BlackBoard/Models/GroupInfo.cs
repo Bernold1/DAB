@@ -20,8 +20,6 @@ namespace BlackBoard.Models
         public Group Group { get; set; }
         public Teacher Teacher { get; set; }
 
-        public List<GroupHandin> GroupHandins { get; set; }
-
 
     }
 }
