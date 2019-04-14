@@ -10,22 +10,23 @@ using BlackBoard.Models;
 
 namespace BlackBoard.Controllers
 {
-    public class StudentsController : Controller
+    public class GroupInfoesController : Controller
     {
         private readonly MyDBContext _context;
 
-        public StudentsController(MyDBContext context)
+        public GroupInfoesController(MyDBContext context)
         {
             _context = context;
         }
 
-        // GET: Students
+        // GET: GroupInfoes
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Students.ToListAsync());
+            var myDBContext = _context.GroupsInfo.Include(g => g.Student);
+            return View(await myDBContext.ToListAsync());
         }
 
-        // GET: Students/Details/5
+        // GET: GroupInfoes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,41 +34,42 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .Include( s => s.Enrolls)
-                .ThenInclude(enrolls => enrolls.Course)
-                .FirstOrDefaultAsync(m => m.StudentAuId == id);
-            if (student == null)
+            var groupInfo = await _context.GroupsInfo
+                .Include(g => g.Student)
+                .FirstOrDefaultAsync(m => m.GroupInfoId == id);
+            if (groupInfo == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(groupInfo);
         }
 
-        // GET: Students/Create
+        // GET: GroupInfoes/Create
         public IActionResult Create()
         {
+            ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName");
             return View();
         }
 
-        // POST: Students/Create
+        // POST: GroupInfoes/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("StudentAuId,FirstName,LastName,EnrolledDate,GradulationDate,Grade,isActive")] Student student)
+        public async Task<IActionResult> Create([Bind("GroupInfoId,GroupSize,StudentAuId")] GroupInfo groupInfo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                _context.Add(groupInfo);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName", groupInfo.StudentAuId);
+            return View(groupInfo);
         }
 
-        // GET: Students/Edit/5
+        // GET: GroupInfoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -75,22 +77,23 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var groupInfo = await _context.GroupsInfo.FindAsync(id);
+            if (groupInfo == null)
             {
                 return NotFound();
             }
-            return View(student);
+            ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName", groupInfo.StudentAuId);
+            return View(groupInfo);
         }
 
-        // POST: Students/Edit/5
+        // POST: GroupInfoes/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("StudentAuId,FirstName,LastName,EnrolledDate,GradulationDate,Grade,isActive")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("GroupInfoId,GroupSize,StudentAuId")] GroupInfo groupInfo)
         {
-            if (id != student.StudentAuId)
+            if (id != groupInfo.GroupInfoId)
             {
                 return NotFound();
             }
@@ -99,12 +102,12 @@ namespace BlackBoard.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(groupInfo);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.StudentAuId))
+                    if (!GroupInfoExists(groupInfo.GroupInfoId))
                     {
                         return NotFound();
                     }
@@ -115,10 +118,11 @@ namespace BlackBoard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName", groupInfo.StudentAuId);
+            return View(groupInfo);
         }
 
-        // GET: Students/Delete/5
+        // GET: GroupInfoes/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -126,30 +130,31 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.StudentAuId == id);
-            if (student == null)
+            var groupInfo = await _context.GroupsInfo
+                .Include(g => g.Student)
+                .FirstOrDefaultAsync(m => m.GroupInfoId == id);
+            if (groupInfo == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(groupInfo);
         }
 
-        // POST: Students/Delete/5
+        // POST: GroupInfoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var student = await _context.Students.FindAsync(id);
-            _context.Students.Remove(student);
+            var groupInfo = await _context.GroupsInfo.FindAsync(id);
+            _context.GroupsInfo.Remove(groupInfo);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentExists(int id)
+        private bool GroupInfoExists(int id)
         {
-            return _context.Students.Any(e => e.StudentAuId == id);
+            return _context.GroupsInfo.Any(e => e.GroupInfoId == id);
         }
     }
 }

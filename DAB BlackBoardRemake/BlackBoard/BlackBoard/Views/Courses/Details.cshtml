@@ -10,22 +10,22 @@
     <h4>Course</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.CourseName)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.CourseName)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.ClassDateTime)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ClassDateTime)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Teacher)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Teacher.FirstName)
         </dd>
 
@@ -48,8 +48,25 @@
         <h4><br />No enrollments.</h4>
     }
 
+    <h3>Course Content</h3>
+    @if (this.Model.CourseContents != null)
+    {
+        foreach (var content in this.Model.CourseContents)
+        {
+            <a class="nav-link text-dark" asp-area="" asp-route-id="@content.CourseContentId"
+               asp-controller="CourseContents" asp-action="Details">@Html.DisplayFor(modelCC => content.ContentName)</a>
+        }
+    }
+    else
+    {
+            <h4><br />No course content yet.</h4>
+    }
+
+
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.CourseId">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Back to List</a>|
+    <a asp-route-id="@Model.CourseId" asp-controller="CourseContents" asp-action="Create">Create Course Content</a>
+
 </div>

@@ -27,7 +27,7 @@ namespace BlackBoard.Controllers
         }
 
         // GET: Enrolls/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -37,7 +37,7 @@ namespace BlackBoard.Controllers
             var enroll = await _context.Enrolls
                 .Include(e => e.Course)
                 .Include(e => e.Student)
-                .FirstOrDefaultAsync(m => m.CourseId == id);
+                .FirstOrDefaultAsync(m => m.EnrollId == id);
             if (enroll == null)
             {
                 return NotFound();
@@ -59,7 +59,7 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseId,StudentAuId")] Enroll enroll)
+        public async Task<IActionResult> Create([Bind("EnrollId,CourseId,StudentAuId")] Enroll enroll)
         {
             if (ModelState.IsValid)
             {
@@ -73,7 +73,7 @@ namespace BlackBoard.Controllers
         }
 
         // GET: Enrolls/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -95,9 +95,9 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CourseId,StudentAuId")] Enroll enroll)
+        public async Task<IActionResult> Edit(int id, [Bind("EnrollId,CourseId,StudentAuId")] Enroll enroll)
         {
-            if (id != enroll.CourseId)
+            if (id != enroll.EnrollId)
             {
                 return NotFound();
             }
@@ -111,7 +111,7 @@ namespace BlackBoard.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!EnrollExists(enroll.CourseId))
+                    if (!EnrollExists(enroll.EnrollId))
                     {
                         return NotFound();
                     }
@@ -128,7 +128,7 @@ namespace BlackBoard.Controllers
         }
 
         // GET: Enrolls/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -138,7 +138,7 @@ namespace BlackBoard.Controllers
             var enroll = await _context.Enrolls
                 .Include(e => e.Course)
                 .Include(e => e.Student)
-                .FirstOrDefaultAsync(m => m.CourseId == id);
+                .FirstOrDefaultAsync(m => m.EnrollId == id);
             if (enroll == null)
             {
                 return NotFound();
@@ -150,7 +150,7 @@ namespace BlackBoard.Controllers
         // POST: Enrolls/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var enroll = await _context.Enrolls.FindAsync(id);
             _context.Enrolls.Remove(enroll);
@@ -158,9 +158,9 @@ namespace BlackBoard.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool EnrollExists(string id)
+        private bool EnrollExists(int id)
         {
-            return _context.Enrolls.Any(e => e.CourseId == id);
+            return _context.Enrolls.Any(e => e.EnrollId == id);
         }
     }
 }

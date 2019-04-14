@@ -8,7 +8,7 @@ namespace BlackBoard.Models
 {
     public class Student
     {
-        
+        [Display (Name = "Students au ID")]
         public int StudentAuId { get; set; }
         [Display(Name = "Student first name")]
         public string FirstName { get; set; }

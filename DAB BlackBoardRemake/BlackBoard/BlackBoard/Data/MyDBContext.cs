@@ -49,8 +49,8 @@ namespace BlackBoard.Data
 
             //Enroll
             //Relationships
-            modelBuilder.Entity<Enroll>()
-                .HasKey(t => new {t.CourseId, t.StudentAuId});
+            //modelBuilder.Entity<Enroll>()
+            //    .HasKey(t => new {t.CourseId, t.StudentAuId});
             modelBuilder.Entity<Enroll>()
                 .HasOne(e => e.Course)
                 .WithMany(c => c.Enrolls)
@@ -59,13 +59,6 @@ namespace BlackBoard.Data
                 .HasOne(e => e.Student)
                 .WithMany(s => s.Enrolls)
                 .HasForeignKey(e => e.StudentAuId);
-            //Data seeding Enroll
-            modelBuilder.Entity<Enroll>()
-                .HasData(new Enroll()
-                {
-                    CourseId = "DAB",
-                    StudentAuId = 350 
-                });
 
             //Teacher    
             //Primary key definition

@@ -37,6 +37,8 @@ namespace BlackBoard.Controllers
             var course = await _context.Courses
                 .Include(c => c.Teacher)
                 .Include(c=> c.Enrolls)
+                .ThenInclude(enroll => enroll.Student)
+                .Include(c => c.CourseContents)//Skal måske slettes
                 .FirstOrDefaultAsync(m => m.CourseId == id);
 
             if (course == null)

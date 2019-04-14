@@ -48,7 +48,8 @@ namespace BlackBoard.Controllers
         // GET: CourseContents/Create
         public IActionResult Create()
         {
-            ViewData["CourseContentId"] = new SelectList(_context.Courses, "CourseId", "CourseId");
+            //ViewData["CourseContentId"] = new SelectList(_context.Courses, "CourseId", "CourseId");
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
             return View();
         }
 
