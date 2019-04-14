@@ -49,7 +49,7 @@ namespace BlackBoard.Controllers
         // GET: Enrolls/Create
         public IActionResult Create()
         {
-            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseId");
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
             ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName");
             return View();
         }

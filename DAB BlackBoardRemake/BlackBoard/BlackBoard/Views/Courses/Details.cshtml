@@ -53,7 +53,7 @@
     {
         foreach (var content in this.Model.CourseContents)
         {
-            <a class="nav-link text-dark" asp-area="" asp-route-id="@content.CourseContentId"
+            <a asp-area="" asp-route-id="@content.CourseContentId"
                asp-controller="CourseContents" asp-action="Details">@Html.DisplayFor(modelCC => content.ContentName)</a>
         }
     }
@@ -66,7 +66,7 @@
     {
         foreach (var content in this.Model.Assignments)
         {
-            <a class="nav-link text-dark" asp-area="" asp-route-id="@content.AssignmentId"
+            <a asp-area="" asp-route-id="@content.AssignmentId"
                asp-controller="GroupHandins" asp-action="Index">@Html.DisplayFor(modelCC => content.AssignmentName)</a>
         }
     }
