@@ -92,6 +92,7 @@ namespace BlackBoard.Controllers
             ViewData["AssignmentId"] = new SelectList(_context.Assignment, "AssignmentId", "AssignmentName", groupHandin.AssignmentId);
             ViewData["GroupId"] = new SelectList(_context.Group, "GroupId", "GroupId", groupHandin.GroupId);
             ViewData["TeacherAuId"] = new SelectList(_context.Teachers, "TeacherAuId", "FirstName", groupHandin.TeacherAuId);
+            //ViewData["Grade"] = new SelectList(_context.GroupHandins, "Grade", "Grade", groupHandin.GroupHandinId);
             return View(groupHandin);
         }
 

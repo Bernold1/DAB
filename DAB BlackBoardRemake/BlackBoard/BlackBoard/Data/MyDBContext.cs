@@ -120,7 +120,7 @@ namespace BlackBoard.Data
                 .HasData(new GroupInfo()
                 {
                     GroupInfoId = 1,
-                    GroupId = 3,
+                    GroupId = 1,
                     GroupSize = 3,
                     StudentAuId = 350,
                 });
@@ -128,7 +128,7 @@ namespace BlackBoard.Data
                 .HasData(new GroupInfo()
                 {
                     GroupInfoId = 2,
-                    GroupId = 3,
+                    GroupId = 1,
                     GroupSize = 3,
                     StudentAuId = 320,
                 });
