@@ -228,3 +228,8 @@ C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\De
 C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\GroupHandins\Details.g.cshtml.cs
 C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\GroupHandins\Edit.g.cshtml.cs
 C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\GroupHandins\Index.g.cshtml.cs
+C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Groups\Create.g.cshtml.cs
+C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Groups\Delete.g.cshtml.cs
+C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Groups\Details.g.cshtml.cs
+C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Groups\Edit.g.cshtml.cs
+C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Groups\Index.g.cshtml.cs

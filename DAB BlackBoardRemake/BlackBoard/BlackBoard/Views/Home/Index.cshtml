@@ -9,17 +9,18 @@
 </div>
 
 <style>
-    a {text-align: center}
+    body {text-align: center}
 </style>
 
 
-<body>
-<a class="nav-link text-dark" asp-area="" asp-controller="Students" asp-action="Index">Click here to view all Students</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Courses" asp-action="Index">Click here to view all Courses</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Teachers" asp-action="Index">Click here to view all Teachers</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Enrolls" asp-action="Index">Click here to enroll a student to a course</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="GroupHandins" asp-action="Index">Click here to view all handins</a>
-<a class="nav-link text-dark" asp-area="" asp-controller="Groups" asp-action="Index">Click here to view all groups</a>
+<body >
+<a asp-area="" asp-controller="Students" asp-action="Index">Click here to view all Students</a><br/>
+<a asp-area="" asp-controller="Courses" asp-action="Index">Click here to view all Courses</a><br />
+<a asp-area="" asp-controller="Teachers" asp-action="Index">Click here to view all Teachers</a><br />
+<a asp-area="" asp-controller="GroupHandins" asp-action="Index">Click here to view all handins</a><br />
+<a asp-area="" asp-controller="Enrolls" asp-action="Create">Click here to enroll an student to an course</a><br />
+<a asp-area="" asp-controller="Groups" asp-action="Index">Click here to view all groups</a><br />
+<a asp-area="" asp-controller="Assignments" asp-action="Create">Click here to create an assignment</a><br />
 </body>
 
 

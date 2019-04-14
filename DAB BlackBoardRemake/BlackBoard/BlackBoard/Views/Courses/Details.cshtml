@@ -4,7 +4,7 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<h1>Course info</h1>
 
 <div>
     <h4>Course</h4>
@@ -60,6 +60,19 @@
     else
     {
             <h4><br />No course content yet.</h4>
+    }
+    <h3>Course Hand ins</h3>
+    @if (this.Model.Assignments != null)
+    {
+        foreach (var content in this.Model.Assignments)
+        {
+            <a class="nav-link text-dark" asp-area="" asp-route-id="@content.AssignmentId"
+               asp-controller="GroupHandins" asp-action="Index">@Html.DisplayFor(modelCC => content.AssignmentName)</a>
+        }
+    }
+    else
+    {
+        <h4><br />No course content yet.</h4>
     }
 
 

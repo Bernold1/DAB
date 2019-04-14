@@ -39,6 +39,8 @@ namespace BlackBoard.Controllers
                 .Include(c=> c.Enrolls)
                 .ThenInclude(enroll => enroll.Student)
                 .Include(c => c.CourseContents)//Skal måske slettes
+                .Include(c => c.Assignments)
+                .ThenInclude(ass => ass.GroupHandins)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
 
             if (course == null)
