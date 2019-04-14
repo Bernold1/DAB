@@ -148,13 +148,17 @@ namespace BlackBoard.Migrations
 
                     b.Property<int>("AssignmentId");
 
-                    b.Property<int>("GroupInfoId");
+                    b.Property<int>("GroupId");
+
+                    b.Property<int?>("GroupInfoId");
 
                     b.Property<int>("TeacherAuId");
 
                     b.HasKey("GroupHandinId");
 
                     b.HasIndex("AssignmentId");
+
+                    b.HasIndex("GroupId");
 
                     b.HasIndex("GroupInfoId");
 
@@ -167,7 +171,7 @@ namespace BlackBoard.Migrations
                         {
                             GroupHandinId = 1,
                             AssignmentId = 1,
-                            GroupInfoId = 1,
+                            GroupId = 1,
                             TeacherAuId = 1
                         });
                 });
@@ -315,10 +319,14 @@ namespace BlackBoard.Migrations
                         .HasForeignKey("AssignmentId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("BlackBoard.Models.GroupInfo", "GroupInfo")
+                    b.HasOne("BlackBoard.Models.Group", "Group")
                         .WithMany("GroupHandins")
-                        .HasForeignKey("GroupInfoId")
+                        .HasForeignKey("GroupId")
                         .OnDelete(DeleteBehavior.Cascade);
+
+                    b.HasOne("BlackBoard.Models.GroupInfo")
+                        .WithMany("GroupHandins")
+                        .HasForeignKey("GroupInfoId");
 
                     b.HasOne("BlackBoard.Models.Teacher", "Teacher")
                         .WithMany("GroupHandins")

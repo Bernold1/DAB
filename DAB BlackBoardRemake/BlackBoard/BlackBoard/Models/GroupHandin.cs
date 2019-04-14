@@ -14,8 +14,12 @@ namespace BlackBoard.Models
         public Assignment Assignment { get; set; }
 
         //GroupInfo FK
-        public int GroupInfoId { get; set; }
-        public GroupInfo GroupInfo { get; set; }
+        //public int GroupInfoId { get; set; }
+        //public GroupInfo GroupInfo { get; set; }
+
+        //Group FK
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
 
         //Teacher FK
         public int TeacherAuId { get; set; }

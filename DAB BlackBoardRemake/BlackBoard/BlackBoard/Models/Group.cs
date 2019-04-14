@@ -9,5 +9,6 @@ namespace BlackBoard.Models
     {
         public int GroupId { get; set; }
         public List<GroupInfo> GroupInfos { get; set; }
+        public List<GroupHandin> GroupHandins { get; set; }
     }
 }

@@ -121,21 +121,25 @@ namespace BlackBoard.Data
                 .HasOne(gh => gh.Assignment)
                 .WithMany(a => a.GroupHandins)
                 .HasForeignKey(gh => gh.AssignmentId);
-            modelBuilder.Entity<GroupHandin>()
+            /*modelBuilder.Entity<GroupHandin>()
                 .HasOne(gh => gh.GroupInfo)
                 .WithMany(gi => gi.GroupHandins)
-                .HasForeignKey(gh => gh.GroupInfoId);
+                .HasForeignKey(gh => gh.GroupInfoId);*/
             modelBuilder.Entity<GroupHandin>()
                 .HasOne(gh => gh.Teacher)
                 .WithMany(t => t.GroupHandins)
                 .HasForeignKey(gh => gh.TeacherAuId);
+            modelBuilder.Entity<GroupHandin>()
+                .HasOne<Group>(gh => gh.Group)
+                .WithMany(g => g.GroupHandins)
+                .HasForeignKey(gh => gh.GroupId);
             //Data seeding GroupHandin
             modelBuilder.Entity<GroupHandin>()
                 .HasData(new GroupHandin()
                 {
                     GroupHandinId = 1,
                     AssignmentId = 1,
-                    GroupInfoId = 1,
+                    GroupId = 1, //plejede at være groupinfoid før group blev et joined table
                     TeacherAuId = 1
                 });
             //Course
@@ -194,6 +198,8 @@ namespace BlackBoard.Data
                 });
 
         }
+
+        public DbSet<BlackBoard.Models.Group> Group { get; set; }
 
     }
 }
