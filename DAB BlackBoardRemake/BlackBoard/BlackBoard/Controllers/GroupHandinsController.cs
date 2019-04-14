@@ -36,6 +36,7 @@ namespace BlackBoard.Controllers
 
             var groupHandin = await _context.GroupHandins
                 .Include(g => g.Assignment)
+                .ThenInclude(a => a.Course)
                 .Include(g => g.Group)
                 .ThenInclude(g => g.GroupInfos)
                 .Include(g => g.Teacher)
