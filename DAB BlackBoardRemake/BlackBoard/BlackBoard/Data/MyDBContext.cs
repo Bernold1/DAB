@@ -84,10 +84,19 @@ namespace BlackBoard.Data
                     IsAssistant = false,
                     Birthday = new DateTime(1980, 1, 1)
                 });
+            modelBuilder.Entity<Group>().HasData(new Group()
+            {
+                GroupId = 1
+            });
+
             //GroupInfo
             modelBuilder.Entity<GroupInfo>()
                 .Property(gi => gi.GroupSize)
                 .IsRequired();
+            modelBuilder.Entity<GroupInfo>()
+                .HasOne(gi => gi.Group)
+                .WithMany(g => g.GroupInfos)
+                .HasForeignKey(gi => gi.GroupId);
             //Relationships
             modelBuilder.Entity<GroupInfo>()
                 .HasOne(gi => gi.Student)
@@ -101,6 +110,7 @@ namespace BlackBoard.Data
                 .HasData(new GroupInfo()
                 {
                     GroupInfoId = 1,
+                    GroupId = 1,
                     GroupSize = 3,
                     StudentAuId = 350,
                 });

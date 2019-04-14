@@ -15,7 +15,9 @@ namespace BlackBoard.Models
         //Student FK
         public int StudentAuId { get; set; }
         public Student Student { get; set; }
-
+        //Group FK
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
         public Teacher Teacher { get; set; }
 
         public List<GroupHandin> GroupHandins { get; set; }

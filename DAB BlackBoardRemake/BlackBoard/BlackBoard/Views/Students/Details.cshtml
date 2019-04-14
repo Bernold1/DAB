@@ -72,12 +72,12 @@
         foreach (var group in this.Model.GroupInfos)
         {
             <a asp-area="" asp-route-id="@group.GroupInfoId"
-               asp-controller="GroupInfoes" asp-action="Details">Group Number: @Html.DisplayFor(modelGI => group.GroupInfoId)</a>
+             asp-controller="GroupInfos" asp-action="Details">Group Number: @Html.DisplayFor(modelGI => group.GroupId)</a>
         }
     }
     else
     {
-        <h4><br />No course content yet.</h4>
+            <p><br />Not part of any groups</p>
     }
 
 </div>

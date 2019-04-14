@@ -10,23 +10,23 @@ using BlackBoard.Models;
 
 namespace BlackBoard.Controllers
 {
-    public class GroupInfoesController : Controller
+    public class GroupInfosController : Controller
     {
         private readonly MyDBContext _context;
 
-        public GroupInfoesController(MyDBContext context)
+        public GroupInfosController(MyDBContext context)
         {
             _context = context;
         }
 
-        // GET: GroupInfoes
+        // GET: GroupInfos
         public async Task<IActionResult> Index()
         {
-            var myDBContext = _context.GroupsInfo.Include(g => g.Student);
+            var myDBContext = _context.GroupsInfo.Include(g => g.Group).Include(g => g.Student);
             return View(await myDBContext.ToListAsync());
         }
 
-        // GET: GroupInfoes/Details/5
+        // GET: GroupInfos/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -35,6 +35,7 @@ namespace BlackBoard.Controllers
             }
 
             var groupInfo = await _context.GroupsInfo
+                .Include(g => g.Group)
                 .Include(g => g.Student)
                 .FirstOrDefaultAsync(m => m.GroupInfoId == id);
             if (groupInfo == null)
@@ -45,19 +46,20 @@ namespace BlackBoard.Controllers
             return View(groupInfo);
         }
 
-        // GET: GroupInfoes/Create
+        // GET: GroupInfos/Create
         public IActionResult Create()
         {
+            ViewData["GroupId"] = new SelectList(_context.Set<Group>(), "GroupId", "GroupId");
             ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName");
             return View();
         }
 
-        // POST: GroupInfoes/Create
+        // POST: GroupInfos/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupInfoId,GroupSize,StudentAuId")] GroupInfo groupInfo)
+        public async Task<IActionResult> Create([Bind("GroupInfoId,GroupSize,StudentAuId,GroupId")] GroupInfo groupInfo)
         {
             if (ModelState.IsValid)
             {
@@ -65,11 +67,12 @@ namespace BlackBoard.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["GroupId"] = new SelectList(_context.Set<Group>(), "GroupId", "GroupId", groupInfo.GroupId);
             ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName", groupInfo.StudentAuId);
             return View(groupInfo);
         }
 
-        // GET: GroupInfoes/Edit/5
+        // GET: GroupInfos/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -82,16 +85,17 @@ namespace BlackBoard.Controllers
             {
                 return NotFound();
             }
+            ViewData["GroupId"] = new SelectList(_context.Set<Group>(), "GroupId", "GroupId", groupInfo.GroupId);
             ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName", groupInfo.StudentAuId);
             return View(groupInfo);
         }
 
-        // POST: GroupInfoes/Edit/5
+        // POST: GroupInfos/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GroupInfoId,GroupSize,StudentAuId")] GroupInfo groupInfo)
+        public async Task<IActionResult> Edit(int id, [Bind("GroupInfoId,GroupSize,StudentAuId,GroupId")] GroupInfo groupInfo)
         {
             if (id != groupInfo.GroupInfoId)
             {
@@ -118,11 +122,12 @@ namespace BlackBoard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["GroupId"] = new SelectList(_context.Set<Group>(), "GroupId", "GroupId", groupInfo.GroupId);
             ViewData["StudentAuId"] = new SelectList(_context.Students, "StudentAuId", "FirstName", groupInfo.StudentAuId);
             return View(groupInfo);
         }
 
-        // GET: GroupInfoes/Delete/5
+        // GET: GroupInfos/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,6 +136,7 @@ namespace BlackBoard.Controllers
             }
 
             var groupInfo = await _context.GroupsInfo
+                .Include(g => g.Group)
                 .Include(g => g.Student)
                 .FirstOrDefaultAsync(m => m.GroupInfoId == id);
             if (groupInfo == null)
@@ -141,7 +147,7 @@ namespace BlackBoard.Controllers
             return View(groupInfo);
         }
 
-        // POST: GroupInfoes/Delete/5
+        // POST: GroupInfos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

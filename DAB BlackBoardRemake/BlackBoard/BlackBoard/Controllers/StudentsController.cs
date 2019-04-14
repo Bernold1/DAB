@@ -36,6 +36,7 @@ namespace BlackBoard.Controllers
             var student = await _context.Students
                 .Include( s => s.Enrolls)
                 .ThenInclude(enrolls => enrolls.Course)
+                .Include(s => s.GroupInfos)
                 .FirstOrDefaultAsync(m => m.StudentAuId == id);
             if (student == null)
             {
