@@ -36,6 +36,7 @@ namespace BlackBoard.Controllers
 
             var course = await _context.Courses
                 .Include(c => c.Teacher)
+                .Include(c=> c.Enrolls)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
 
             if (course == null)
@@ -43,7 +44,6 @@ namespace BlackBoard.Controllers
                 return NotFound();
             }
 
-            var vEnrolls = course.Enrolls;
             return View(course);
         }
 

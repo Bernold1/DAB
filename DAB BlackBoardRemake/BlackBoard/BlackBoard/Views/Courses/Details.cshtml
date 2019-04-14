@@ -36,7 +36,7 @@
         foreach (var enroll in this.Model.Enrolls)
         {
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(modelEnroll => enroll.StudentAuId)
+                @Html.DisplayNameFor(modelEnroll => enroll.Student.FirstName)
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(modelEnroll => enroll.Student.FirstName)
