@@ -116,35 +116,6 @@ namespace BlackBoard.Controllers
             return View(teacher);
         }
 
-        // GET: Teachers/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var teacher = await _context.Teachers
-                .FirstOrDefaultAsync(m => m.TeacherAuId == id);
-            if (teacher == null)
-            {
-                return NotFound();
-            }
-
-            return View(teacher);
-        }
-
-        // POST: Teachers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var teacher = await _context.Teachers.FindAsync(id);
-            _context.Teachers.Remove(teacher);
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
         private bool TeacherExists(int id)
         {
             return _context.Teachers.Any(e => e.TeacherAuId == id);

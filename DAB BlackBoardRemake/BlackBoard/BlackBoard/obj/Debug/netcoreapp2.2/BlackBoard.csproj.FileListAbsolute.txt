@@ -114,7 +114,6 @@ C:\Users\Chris\Desktop\DAB BlackBoardRemake\DAB\DAB BlackBoardRemake\BlackBoard\
 C:\Users\Chris\Desktop\DAB BlackBoardRemake\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Edit.g.cshtml.cs
 C:\Users\Chris\Desktop\DAB BlackBoardRemake\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Index.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Assignments\Create.g.cshtml.cs
-C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Assignments\Delete.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Assignments\Details.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Assignments\Edit.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Assignments\Index.g.cshtml.cs
@@ -124,12 +123,10 @@ C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\o
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseContents\Edit.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseContents\Index.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Create.g.cshtml.cs
-C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Delete.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Details.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Edit.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Index.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Teachers\Create.g.cshtml.cs
-C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Teachers\Delete.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Teachers\Details.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Teachers\Edit.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Teachers\Index.g.cshtml.cs
