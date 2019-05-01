@@ -23,6 +23,7 @@ namespace BlackBoard.Models
 
         public List<GroupHandin> GroupHandins { get; set; }
         public List<GroupInfo> GroupInfos { get; set; }
-        public List<Course> Courses { get; set; }
+        public List<CourseManagement> CourseManagements { get; set; }
+
     }
 }

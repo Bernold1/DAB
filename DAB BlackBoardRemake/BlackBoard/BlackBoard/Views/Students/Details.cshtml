@@ -48,36 +48,38 @@
         </dd>
     </dl>
 
-    <h3>Enrollments</h3>
+    <b>Enrollments</b><br />
     @if (this.Model.Enrolls != null)
     {
         foreach (var enroll in this.Model.Enrolls)
         {
+            <p>Student:</p>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(modelEnroll => enroll.Course.CourseName)
             </dt>
             <dd class="col-sm-10">
                 @Html.DisplayFor(modelEnroll => enroll.Course.CourseName)
             </dd>
+            <br />
         }
     }
     else
     {
-        <h4><br />No enrollments.</h4><br/>
+        <h4><br />No enrollments.</h4><br />
     }
 
-    <h3>Student Groups</h3>
+    <b>Student Groups</b><br/>
     @if (this.Model.GroupInfos != null)
     {
         foreach (var group in this.Model.GroupInfos)
         {
             <a asp-area="" asp-route-id="@group.GroupInfoId"
-             asp-controller="GroupInfos" asp-action="Details">Group Number: @Html.DisplayFor(modelGI => group.GroupId)</a>
+               asp-controller="GroupInfos" asp-action="Details">Group Number:@Html.DisplayFor(modelGI => group.GroupId)</a>
         }
     }
     else
     {
-            <p><br />Not part of any groups</p>
+        <p><br />Not part of any groups</p> <br />
     }
 
 </div>

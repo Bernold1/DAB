@@ -18,13 +18,10 @@ namespace BlackBoard.Models
         [DataType(DataType.Date)]
         public DateTime ClassDateTime { get; set; }
 
-        //Teacher FK
-        public int TeacherAuId { get; set; }
-        public Teacher Teacher { get; set; }
-
         public List<Assignment> Assignments { get; set; }
         public List<CourseContent> CourseContents { get; set; }
 
         public List<Enroll> Enrolls { get; set; }
+        public List<CourseManagement> CourseManagements { get; set; }
     }
 }

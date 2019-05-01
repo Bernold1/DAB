@@ -22,8 +22,7 @@ namespace BlackBoard.Controllers
         // GET: Courses
         public async Task<IActionResult> Index()
         {
-            var myDBContext = _context.Courses.Include(c => c.Teacher);
-            return View(await myDBContext.ToListAsync());
+            return View(await _context.Courses.ToListAsync());
         }
 
         // GET: Courses/Details/5
@@ -35,14 +34,14 @@ namespace BlackBoard.Controllers
             }
 
             var course = await _context.Courses
-                .Include(c => c.Teacher)
-                .Include(c=> c.Enrolls)
+                .Include(c=>c.CourseManagements)
+                .ThenInclude(cm=>cm.Teacher)
+                .Include(c => c.Enrolls)
                 .ThenInclude(enroll => enroll.Student)
                 .Include(c => c.CourseContents)
                 .Include(c => c.Assignments)
                 .ThenInclude(ass => ass.GroupHandins)
                 .FirstOrDefaultAsync(m => m.CourseId == id);
-
             if (course == null)
             {
                 return NotFound();
@@ -54,7 +53,6 @@ namespace BlackBoard.Controllers
         // GET: Courses/Create
         public IActionResult Create()
         {
-            ViewData["TeacherAuId"] = new SelectList(_context.Teachers, "TeacherAuId", "FirstName");
             return View();
         }
 
@@ -63,7 +61,7 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("CourseId,CourseName,ClassDateTime,TeacherAuId")] Course course)
+        public async Task<IActionResult> Create([Bind("CourseId,CourseName,ClassDateTime")] Course course)
         {
             if (ModelState.IsValid)
             {
@@ -71,7 +69,6 @@ namespace BlackBoard.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TeacherAuId"] = new SelectList(_context.Teachers, "TeacherAuId", "FirstName", course.TeacherAuId);
             return View(course);
         }
 
@@ -88,7 +85,6 @@ namespace BlackBoard.Controllers
             {
                 return NotFound();
             }
-            ViewData["TeacherAuId"] = new SelectList(_context.Teachers, "TeacherAuId", "FirstName", course.TeacherAuId);
             return View(course);
         }
 
@@ -97,7 +93,7 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CourseId,CourseName,ClassDateTime,TeacherAuId")] Course course)
+        public async Task<IActionResult> Edit(string id, [Bind("CourseId,CourseName,ClassDateTime")] Course course)
         {
             if (id != course.CourseId)
             {
@@ -124,8 +120,36 @@ namespace BlackBoard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["TeacherAuId"] = new SelectList(_context.Teachers, "TeacherAuId", "FirstName", course.TeacherAuId);
             return View(course);
+        }
+
+        // GET: Courses/Delete/5
+        public async Task<IActionResult> Delete(string id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var course = await _context.Courses
+                .FirstOrDefaultAsync(m => m.CourseId == id);
+            if (course == null)
+            {
+                return NotFound();
+            }
+
+            return View(course);
+        }
+
+        // POST: Courses/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(string id)
+        {
+            var course = await _context.Courses.FindAsync(id);
+            _context.Courses.Remove(course);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
 
         private bool CourseExists(string id)

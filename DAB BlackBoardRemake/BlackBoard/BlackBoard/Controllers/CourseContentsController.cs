@@ -27,7 +27,7 @@ namespace BlackBoard.Controllers
         }
 
         // GET: CourseContents/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
             {
@@ -48,8 +48,7 @@ namespace BlackBoard.Controllers
         // GET: CourseContents/Create
         public IActionResult Create()
         {
-            //ViewData["CourseContentId"] = new SelectList(_context.Courses, "CourseId", "CourseId");
-            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseName");
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseId");
             return View();
         }
 
@@ -66,12 +65,12 @@ namespace BlackBoard.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseContentId"] = new SelectList(_context.Courses, "CourseId", "CourseId", courseContent.CourseContentId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseId", courseContent.CourseId);
             return View(courseContent);
         }
 
         // GET: CourseContents/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
             {
@@ -83,7 +82,7 @@ namespace BlackBoard.Controllers
             {
                 return NotFound();
             }
-            ViewData["CourseContentId"] = new SelectList(_context.Courses, "CourseId", "CourseId", courseContent.CourseContentId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseId", courseContent.CourseId);
             return View(courseContent);
         }
 
@@ -92,7 +91,7 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("CourseContentId,ContentName,CourseId")] CourseContent courseContent)
+        public async Task<IActionResult> Edit(int id, [Bind("CourseContentId,ContentName,CourseId")] CourseContent courseContent)
         {
             if (id != courseContent.CourseContentId)
             {
@@ -119,12 +118,12 @@ namespace BlackBoard.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CourseContentId"] = new SelectList(_context.Courses, "CourseId", "CourseId", courseContent.CourseContentId);
+            ViewData["CourseId"] = new SelectList(_context.Courses, "CourseId", "CourseId", courseContent.CourseId);
             return View(courseContent);
         }
 
         // GET: CourseContents/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
             {
@@ -145,7 +144,7 @@ namespace BlackBoard.Controllers
         // POST: CourseContents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var courseContent = await _context.CourseContents.FindAsync(id);
             _context.CourseContents.Remove(courseContent);
@@ -153,7 +152,7 @@ namespace BlackBoard.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool CourseContentExists(string id)
+        private bool CourseContentExists(int id)
         {
             return _context.CourseContents.Any(e => e.CourseContentId == id);
         }

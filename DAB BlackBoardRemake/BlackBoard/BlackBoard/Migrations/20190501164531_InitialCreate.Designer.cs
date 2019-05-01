@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackBoard.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20190501143236_NinthMigration")]
-    partial class NinthMigration
+    [Migration("20190501164531_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,6 +50,22 @@ namespace BlackBoard.Migrations
                             CourseId = "DAB",
                             Deadline = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             RedoCounter = 1
+                        },
+                        new
+                        {
+                            AssignmentId = 2,
+                            AssignmentName = "TCP",
+                            CourseId = "IKN",
+                            Deadline = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RedoCounter = 2
+                        },
+                        new
+                        {
+                            AssignmentId = 3,
+                            AssignmentName = "Mutexes",
+                            CourseId = "ISU",
+                            Deadline = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RedoCounter = 1
                         });
                 });
 
@@ -63,11 +79,7 @@ namespace BlackBoard.Migrations
                     b.Property<string>("CourseName")
                         .IsRequired();
 
-                    b.Property<int>("TeacherAuId");
-
                     b.HasKey("CourseId");
-
-                    b.HasIndex("TeacherAuId");
 
                     b.ToTable("Courses");
 
@@ -76,15 +88,27 @@ namespace BlackBoard.Migrations
                         {
                             CourseId = "DAB",
                             ClassDateTime = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CourseName = "Databases",
-                            TeacherAuId = 1
+                            CourseName = "Databases"
+                        },
+                        new
+                        {
+                            CourseId = "IKN",
+                            ClassDateTime = new DateTime(2016, 1, 2, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CourseName = "Network communication"
+                        },
+                        new
+                        {
+                            CourseId = "ISU",
+                            ClassDateTime = new DateTime(2016, 1, 3, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            CourseName = "Embedded software development"
                         });
                 });
 
             modelBuilder.Entity("BlackBoard.Models.CourseContent", b =>
                 {
-                    b.Property<string>("CourseContentId")
-                        .ValueGeneratedOnAdd();
+                    b.Property<int>("CourseContentId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("ContentName")
                         .IsRequired();
@@ -100,9 +124,84 @@ namespace BlackBoard.Migrations
                     b.HasData(
                         new
                         {
-                            CourseContentId = "L1",
+                            CourseContentId = 1,
                             ContentName = "Intro",
                             CourseId = "DAB"
+                        },
+                        new
+                        {
+                            CourseContentId = 2,
+                            ContentName = "EF core",
+                            CourseId = "DAB"
+                        },
+                        new
+                        {
+                            CourseContentId = 3,
+                            ContentName = "Intro",
+                            CourseId = "IKN"
+                        },
+                        new
+                        {
+                            CourseContentId = 4,
+                            ContentName = "HTTP",
+                            CourseId = "IKN"
+                        },
+                        new
+                        {
+                            CourseContentId = 5,
+                            ContentName = "Intro",
+                            CourseId = "ISU"
+                        },
+                        new
+                        {
+                            CourseContentId = 6,
+                            ContentName = "Threads",
+                            CourseId = "ISU"
+                        });
+                });
+
+            modelBuilder.Entity("BlackBoard.Models.CourseManagement", b =>
+                {
+                    b.Property<int>("CourseManagementId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CouseId");
+
+                    b.Property<int>("TeacherAuId");
+
+                    b.HasKey("CourseManagementId");
+
+                    b.HasIndex("CouseId");
+
+                    b.HasIndex("TeacherAuId");
+
+                    b.ToTable("CourseManagement");
+
+                    b.HasData(
+                        new
+                        {
+                            CourseManagementId = 1,
+                            CouseId = "IKN",
+                            TeacherAuId = 1
+                        },
+                        new
+                        {
+                            CourseManagementId = 2,
+                            CouseId = "IKN",
+                            TeacherAuId = 3
+                        },
+                        new
+                        {
+                            CourseManagementId = 3,
+                            CouseId = "ISU",
+                            TeacherAuId = 1
+                        },
+                        new
+                        {
+                            CourseManagementId = 4,
+                            CouseId = "DAB",
+                            TeacherAuId = 10
                         });
                 });
 
@@ -139,6 +238,30 @@ namespace BlackBoard.Migrations
                         new
                         {
                             GroupId = 1
+                        },
+                        new
+                        {
+                            GroupId = 5
+                        },
+                        new
+                        {
+                            GroupId = 6
+                        },
+                        new
+                        {
+                            GroupId = 7
+                        },
+                        new
+                        {
+                            GroupId = 8
+                        },
+                        new
+                        {
+                            GroupId = 9
+                        },
+                        new
+                        {
+                            GroupId = 10
                         });
                 });
 
@@ -171,8 +294,24 @@ namespace BlackBoard.Migrations
                         {
                             GroupHandinId = 1,
                             AssignmentId = 1,
-                            Grade = 7.0,
+                            Grade = 12.0,
                             GroupId = 1,
+                            TeacherAuId = 1
+                        },
+                        new
+                        {
+                            GroupHandinId = 2,
+                            AssignmentId = 1,
+                            Grade = 4.0,
+                            GroupId = 9,
+                            TeacherAuId = 1
+                        },
+                        new
+                        {
+                            GroupHandinId = 3,
+                            AssignmentId = 1,
+                            Grade = 2.0,
+                            GroupId = 10,
                             TeacherAuId = 1
                         });
                 });
@@ -214,7 +353,28 @@ namespace BlackBoard.Migrations
                             GroupInfoId = 2,
                             GroupId = 1,
                             GroupSize = 3,
+                            StudentAuId = 330
+                        },
+                        new
+                        {
+                            GroupInfoId = 3,
+                            GroupId = 1,
+                            GroupSize = 3,
                             StudentAuId = 320
+                        },
+                        new
+                        {
+                            GroupInfoId = 4,
+                            GroupId = 9,
+                            GroupSize = 1,
+                            StudentAuId = 360
+                        },
+                        new
+                        {
+                            GroupInfoId = 5,
+                            GroupId = 10,
+                            GroupSize = 1,
+                            StudentAuId = 340
                         });
                 });
 
@@ -262,6 +422,36 @@ namespace BlackBoard.Migrations
                             GradulationDate = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Bjerg",
                             isActive = false
+                        },
+                        new
+                        {
+                            StudentAuId = 330,
+                            EnrolledDate = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Harold",
+                            Grade = 8.3000000000000007,
+                            GradulationDate = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastName = "Nyborg",
+                            isActive = false
+                        },
+                        new
+                        {
+                            StudentAuId = 340,
+                            EnrolledDate = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Jens",
+                            Grade = 8.3000000000000007,
+                            GradulationDate = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastName = "Flix",
+                            isActive = false
+                        },
+                        new
+                        {
+                            StudentAuId = 360,
+                            EnrolledDate = new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Bill",
+                            Grade = 8.3000000000000007,
+                            GradulationDate = new DateTime(2020, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LastName = "Ka",
+                            isActive = false
                         });
                 });
 
@@ -293,6 +483,22 @@ namespace BlackBoard.Migrations
                             FirstName = "Lars",
                             IsAssistant = false,
                             LastName = "Jensen"
+                        },
+                        new
+                        {
+                            TeacherAuId = 3,
+                            Birthday = new DateTime(1980, 2, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Karen",
+                            IsAssistant = false,
+                            LastName = "Blixen"
+                        },
+                        new
+                        {
+                            TeacherAuId = 10,
+                            Birthday = new DateTime(1960, 1, 20, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            FirstName = "Thomas",
+                            IsAssistant = false,
+                            LastName = "Rasmussen"
                         });
                 });
 
@@ -303,19 +509,23 @@ namespace BlackBoard.Migrations
                         .HasForeignKey("CourseId");
                 });
 
-            modelBuilder.Entity("BlackBoard.Models.Course", b =>
-                {
-                    b.HasOne("BlackBoard.Models.Teacher", "Teacher")
-                        .WithMany("Courses")
-                        .HasForeignKey("TeacherAuId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("BlackBoard.Models.CourseContent", b =>
                 {
                     b.HasOne("BlackBoard.Models.Course", "Course")
                         .WithMany("CourseContents")
                         .HasForeignKey("CourseId");
+                });
+
+            modelBuilder.Entity("BlackBoard.Models.CourseManagement", b =>
+                {
+                    b.HasOne("BlackBoard.Models.Course", "Course")
+                        .WithMany("CourseManagements")
+                        .HasForeignKey("CouseId");
+
+                    b.HasOne("BlackBoard.Models.Teacher", "Teacher")
+                        .WithMany("CourseManagements")
+                        .HasForeignKey("TeacherAuId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BlackBoard.Models.Enroll", b =>

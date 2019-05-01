@@ -8,7 +8,7 @@ namespace BlackBoard.Models
 {
     public class CourseContent
     {
-        public string CourseContentId { get; set; }
+        public int CourseContentId { get; set; }
         [Display(Name = "Name of Course Content")]
         public string ContentName { get; set; }
 

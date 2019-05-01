@@ -7,7 +7,7 @@
 <h1>All Courses</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Create New Course</a>
 </p>
 <table class="table">
     <thead>
@@ -17,9 +17,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ClassDateTime)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Teacher)
             </th>
             <th></th>
         </tr>
@@ -34,11 +31,9 @@
                 @Html.DisplayFor(modelItem => item.ClassDateTime)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Teacher.FirstName)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.CourseId">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.CourseId">Details</a> 
+                <a asp-action="Details" asp-route-id="@item.CourseId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.CourseId">Delete</a>
             </td>
         </tr>
 }
