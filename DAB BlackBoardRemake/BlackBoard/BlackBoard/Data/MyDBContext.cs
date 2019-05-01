@@ -154,7 +154,8 @@ namespace BlackBoard.Data
                     GroupHandinId = 1,
                     AssignmentId = 1,
                     GroupId = 1,
-                    TeacherAuId = 1
+                    TeacherAuId = 1,
+                    Grade = 7
                 });
             //Course
             modelBuilder.Entity<Course>()
