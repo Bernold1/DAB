@@ -4,14 +4,16 @@ using BlackBoard.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BlackBoard.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    partial class MyDBContextModelSnapshot : ModelSnapshot
+    [Migration("20190501135840_EighthMigration")]
+    partial class EighthMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -148,7 +150,7 @@ namespace BlackBoard.Migrations
 
                     b.Property<int>("AssignmentId");
 
-                    b.Property<double>("Grade");
+                    b.Property<int>("Grade");
 
                     b.Property<int>("GroupId");
 
@@ -169,7 +171,7 @@ namespace BlackBoard.Migrations
                         {
                             GroupHandinId = 1,
                             AssignmentId = 1,
-                            Grade = 7.0,
+                            Grade = 7,
                             GroupId = 1,
                             TeacherAuId = 1
                         });

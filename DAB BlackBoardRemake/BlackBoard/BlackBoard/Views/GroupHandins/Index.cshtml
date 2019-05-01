@@ -4,7 +4,8 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>All Group Hand ins</h1>
+<h1>List of all group Handins</h1>
+<p>Press edit on group Handin to grade assignment</p>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -14,6 +15,12 @@
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Assignment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Assignment.Course.CourseName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grade)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Group)
@@ -29,6 +36,9 @@
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Assignment.AssignmentName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grade)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Group.GroupId)

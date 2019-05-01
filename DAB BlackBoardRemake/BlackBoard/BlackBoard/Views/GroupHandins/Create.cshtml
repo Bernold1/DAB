@@ -4,7 +4,7 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create Group Hand in</h1>
+<h1>Create</h1>
 
 <h4>GroupHandin</h4>
 <hr />
@@ -15,6 +15,11 @@
             <div class="form-group">
                 <label asp-for="AssignmentId" class="control-label"></label>
                 <select asp-for="AssignmentId" class ="form-control" asp-items="ViewBag.AssignmentId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Grade" class="control-label"></label>
+                <input asp-for="Grade" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="GroupId" class="control-label"></label>

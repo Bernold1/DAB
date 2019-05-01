@@ -36,7 +36,7 @@ namespace BlackBoard.Controllers
 
             var groupHandin = await _context.GroupHandins
                 .Include(g => g.Assignment)
-                .ThenInclude(a => a.Course)
+                .ThenInclude( a => a.Course)
                 .Include(g => g.Group)
                 .ThenInclude(g => g.GroupInfos)
                 .Include(g => g.Teacher)
@@ -63,7 +63,7 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("GroupHandinId,AssignmentId,GroupId,TeacherAuId")] GroupHandin groupHandin)
+        public async Task<IActionResult> Create([Bind("GroupHandinId,AssignmentId,Grade,GroupId,TeacherAuId")] GroupHandin groupHandin)
         {
             if (ModelState.IsValid)
             {
@@ -93,7 +93,6 @@ namespace BlackBoard.Controllers
             ViewData["AssignmentId"] = new SelectList(_context.Assignment, "AssignmentId", "AssignmentName", groupHandin.AssignmentId);
             ViewData["GroupId"] = new SelectList(_context.Group, "GroupId", "GroupId", groupHandin.GroupId);
             ViewData["TeacherAuId"] = new SelectList(_context.Teachers, "TeacherAuId", "FirstName", groupHandin.TeacherAuId);
-            //ViewData["Grade"] = new SelectList(_context.GroupHandins, "Grade", "Grade", groupHandin.GroupHandinId);
             return View(groupHandin);
         }
 
@@ -102,7 +101,7 @@ namespace BlackBoard.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("GroupHandinId,AssignmentId,GroupId,TeacherAuId")] GroupHandin groupHandin)
+        public async Task<IActionResult> Edit(int id, [Bind("GroupHandinId,AssignmentId,Grade,GroupId,TeacherAuId")] GroupHandin groupHandin)
         {
             if (id != groupHandin.GroupHandinId)
             {
