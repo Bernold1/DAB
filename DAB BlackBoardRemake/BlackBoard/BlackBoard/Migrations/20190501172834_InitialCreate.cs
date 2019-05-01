@@ -281,8 +281,8 @@ namespace BlackBoard.Migrations
                 values: new object[,]
                 {
                     { 1, "EF core", "DAB", new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 3, "Mutexes", "ISU", new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 },
-                    { 2, "TCP", "IKN", new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 }
+                    { 2, "TCP", "IKN", new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 2 },
+                    { 3, "Mutexes", "ISU", new DateTime(2016, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), 1 }
                 });
 
             migrationBuilder.InsertData(
@@ -290,12 +290,12 @@ namespace BlackBoard.Migrations
                 columns: new[] { "CourseContentId", "ContentName", "CourseId" },
                 values: new object[,]
                 {
-                    { 5, "Intro", "ISU" },
-                    { 4, "HTTP", "IKN" },
-                    { 6, "Threads", "ISU" },
-                    { 2, "EF core", "DAB" },
                     { 1, "Intro", "DAB" },
-                    { 3, "Intro", "IKN" }
+                    { 2, "EF core", "DAB" },
+                    { 3, "Intro", "IKN" },
+                    { 4, "HTTP", "IKN" },
+                    { 5, "Intro", "ISU" },
+                    { 6, "Threads", "ISU" }
                 });
 
             migrationBuilder.InsertData(
@@ -303,10 +303,26 @@ namespace BlackBoard.Migrations
                 columns: new[] { "CourseManagementId", "CouseId", "TeacherAuId" },
                 values: new object[,]
                 {
-                    { 2, "IKN", 3 },
-                    { 1, "IKN", 1 },
                     { 3, "ISU", 1 },
+                    { 1, "IKN", 1 },
+                    { 2, "IKN", 3 },
                     { 4, "DAB", 10 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Enrolls",
+                columns: new[] { "EnrollId", "CourseId", "StudentAuId" },
+                values: new object[,]
+                {
+                    { 2, "DAB", 330 },
+                    { 6, "IKN", 330 },
+                    { 4, "DAB", 340 },
+                    { 8, "IKN", 340 },
+                    { 9, "ISU", 360 },
+                    { 5, "IKN", 350 },
+                    { 1, "DAB", 350 },
+                    { 3, "DAB", 320 },
+                    { 7, "IKN", 320 }
                 });
 
             migrationBuilder.InsertData(
@@ -329,12 +345,12 @@ namespace BlackBoard.Migrations
             migrationBuilder.InsertData(
                 table: "GroupHandins",
                 columns: new[] { "GroupHandinId", "AssignmentId", "Grade", "GroupId", "TeacherAuId" },
-                values: new object[] { 2, 1, 4.0, 9, 1 });
+                values: new object[] { 2, 1, 4.0, 9, 10 });
 
             migrationBuilder.InsertData(
                 table: "GroupHandins",
                 columns: new[] { "GroupHandinId", "AssignmentId", "Grade", "GroupId", "TeacherAuId" },
-                values: new object[] { 3, 1, 2.0, 10, 1 });
+                values: new object[] { 3, 1, 2.0, 10, 3 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_Assignment_CourseId",

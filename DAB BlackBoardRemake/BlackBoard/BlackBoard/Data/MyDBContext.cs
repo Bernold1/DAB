@@ -96,6 +96,20 @@ namespace BlackBoard.Data
                 .HasOne(e => e.Student)
                 .WithMany(s => s.Enrolls)
                 .HasForeignKey(e => e.StudentAuId);
+
+            //Enroll data seeding
+            modelBuilder.Entity<Enroll>()
+                .HasData(
+                    new Enroll { EnrollId = 1, CourseId = "DAB", StudentAuId = 350 },
+                    new Enroll { EnrollId = 2, CourseId = "DAB", StudentAuId = 330 },
+                    new Enroll { EnrollId = 3, CourseId = "DAB", StudentAuId = 320 },
+                    new Enroll { EnrollId = 4, CourseId = "DAB", StudentAuId = 340 },
+                    new Enroll { EnrollId = 5, CourseId = "IKN", StudentAuId = 350 },
+                    new Enroll { EnrollId = 6, CourseId = "IKN", StudentAuId = 330 },
+                    new Enroll { EnrollId = 7, CourseId = "IKN", StudentAuId = 320 },
+                    new Enroll { EnrollId = 8, CourseId = "IKN", StudentAuId = 340 },
+                    new Enroll { EnrollId = 9, CourseId = "ISU", StudentAuId = 360});
+
             //Teacher    
             //Primary key definition
             modelBuilder.Entity<Teacher>()

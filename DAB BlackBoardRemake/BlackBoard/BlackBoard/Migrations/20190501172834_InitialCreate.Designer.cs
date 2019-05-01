@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BlackBoard.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20190501164531_InitialCreate")]
+    [Migration("20190501172834_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -222,6 +222,62 @@ namespace BlackBoard.Migrations
                     b.HasIndex("StudentAuId");
 
                     b.ToTable("Enrolls");
+
+                    b.HasData(
+                        new
+                        {
+                            EnrollId = 1,
+                            CourseId = "DAB",
+                            StudentAuId = 350
+                        },
+                        new
+                        {
+                            EnrollId = 2,
+                            CourseId = "DAB",
+                            StudentAuId = 330
+                        },
+                        new
+                        {
+                            EnrollId = 3,
+                            CourseId = "DAB",
+                            StudentAuId = 320
+                        },
+                        new
+                        {
+                            EnrollId = 4,
+                            CourseId = "DAB",
+                            StudentAuId = 340
+                        },
+                        new
+                        {
+                            EnrollId = 5,
+                            CourseId = "IKN",
+                            StudentAuId = 350
+                        },
+                        new
+                        {
+                            EnrollId = 6,
+                            CourseId = "IKN",
+                            StudentAuId = 330
+                        },
+                        new
+                        {
+                            EnrollId = 7,
+                            CourseId = "IKN",
+                            StudentAuId = 320
+                        },
+                        new
+                        {
+                            EnrollId = 8,
+                            CourseId = "IKN",
+                            StudentAuId = 340
+                        },
+                        new
+                        {
+                            EnrollId = 9,
+                            CourseId = "ISU",
+                            StudentAuId = 360
+                        });
                 });
 
             modelBuilder.Entity("BlackBoard.Models.Group", b =>
@@ -304,7 +360,7 @@ namespace BlackBoard.Migrations
                             AssignmentId = 1,
                             Grade = 4.0,
                             GroupId = 9,
-                            TeacherAuId = 1
+                            TeacherAuId = 10
                         },
                         new
                         {
@@ -312,7 +368,7 @@ namespace BlackBoard.Migrations
                             AssignmentId = 1,
                             Grade = 2.0,
                             GroupId = 10,
-                            TeacherAuId = 1
+                            TeacherAuId = 3
                         });
                 });
 
