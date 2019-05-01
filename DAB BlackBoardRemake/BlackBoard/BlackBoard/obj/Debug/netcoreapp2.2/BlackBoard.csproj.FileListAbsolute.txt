@@ -233,3 +233,9 @@ C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\o
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseContents\Details.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseContents\Edit.g.cshtml.cs
 C:\Users\Chris\Desktop\repo\dab\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseContents\Index.g.cshtml.cs
+C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseManagements\Create.g.cshtml.cs
+C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseManagements\Delete.g.cshtml.cs
+C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseManagements\Details.g.cshtml.cs
+C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseManagements\Edit.g.cshtml.cs
+C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\CourseManagements\Index.g.cshtml.cs
+C:\Users\Mads\Source\Repos\DAB\DAB BlackBoardRemake\BlackBoard\BlackBoard\obj\Debug\netcoreapp2.2\Razor\Views\Courses\Delete.g.cshtml.cs
